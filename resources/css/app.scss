@@ -1,0 +1,205 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap-reboot';
+@import 'bootstrap/scss/bootstrap';
+
+// Datatables
+@import 'datatables.net-dt/css/jquery.dataTables.css';
+
+// Common Styling
+body {
+    border-collapse: separate;
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: -internal-quirk-inherit;
+    text-align: start;
+    border-spacing: 2px;
+    font-variant: normal;
+}
+
+p {
+    line-height: 1.5;
+}
+.img-logo {
+    display: inline-block;
+    height: 30px;
+    margin-bottom: 4px;
+}
+
+.navbar-brand {
+    margin-bottom: 0px;
+}
+
+#logout-form {
+    margin: 0;
+    width: fit-content;
+    width: 100%;
+}
+
+#logout-form button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border: none;
+    line-height: normal;
+}
+
+.avatar-img {
+    width: 40px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.members-table-img {
+    width: 40px;
+    border-radius: 10px;
+}
+
+.dt-img {
+    width: 40px;
+    border-radius: 10px;
+}
+
+.action-img {
+    width: 27px;
+    height: 27px;
+    float: right;
+    padding-right:7px;
+    padding-top:8px;
+    cursor: pointer;
+}
+
+.map-img {
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin-right:7px;
+    cursor: pointer;
+}
+
+.gps-img {
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-right:7px;
+    margin-top:2px;
+    cursor: pointer;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0px;
+}
+.header-action-img {
+    width: 21px;
+    height: 21px;
+    float: right;
+    margin-right:7px;
+    padding-top:1px;
+    cursor: pointer;
+}
+
+table.members-dt tbody td {
+    padding: 1px;
+}
+
+#members-table tr td:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    padding: 1px;
+}
+
+#members-table tr td:nth-child(2) {
+    //font-size: 1.2em;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+#members-table th {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#members-booked-table tr td:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+}
+
+#members-booked-table th {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#members-booked-table tr td:nth-child(2) {
+    font-size: 1.2em;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+// #members-add-table tr td:nth-child(1) {
+//     width: 40px;
+//     height: 40px;
+//     padding: 2px;
+// }
+
+.users-table tr td:first-child {
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.line-wrap {
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.dataTables_wrapper .dataTables_paginate, .dataTables_wrapper .dataTables_info {
+    //display: inline-block;
+    font-size: 10pt;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button, .dataTables_wrapper .dataTables_paginate .ellipsis{
+    //display: inline-block;
+    font-size: 10pt;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    //display: inline-block;
+    font-size: 10pt;
+    padding: 4px 10px;
+}
+
+#boxes-table tbody tr, #members-add-table tbody tr, #participant-add-table tbody tr {
+    cursor: pointer;
+}
+
+pre {
+    font-family: "Avenir", Verdana, sans-serif;
+}
+
+@media (orientation:portrait) {
+    .hide-on-portrait {
+        display: none;
+    }
+}
+
+//
+// Maps
+//
+
+#mapid, #findgym_mapid {
+    height: 400px;
+}
+
+#gym_mapid {
+    height: 300px;
+}

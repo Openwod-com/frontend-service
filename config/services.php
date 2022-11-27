@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'auth' => [
+        'base_url' => env('AUTH_SERVICE_BASE_URL'),
+    ],
+
 ];

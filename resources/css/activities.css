@@ -1,0 +1,70 @@
+.h4 {
+    float: left;
+}
+
+#logout {
+    float: right;
+    width: 100px;
+    margin-top: 10px;
+}
+
+tr {
+    width: 100%;
+}
+
+.participant-action-img {
+    width: 20px;
+    height: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+th:nth-child(3), td:nth-child(3) {
+ padding-right: 15px;
+ padding-left: 0px;
+}
+
+th:nth-child(2), th:nth-child(4), td:nth-child(2), td:nth-child(4) {
+    padding-left: 0px;
+}
+
+.table-hover tbody tr {
+    cursor: pointer;
+}
+
+#showActivityModal .table-prefix {
+    margin: 0;
+    margin-top: 10px;
+}
+
+#activities-table th {
+    background-color: #dde0b7;
+    border-bottom: 2px solid #1b1e217d;
+    padding: 0.5rem;
+}
+
+#activities-table td {
+    padding: 0.65rem;
+}
+
+#activities-table thead th {
+    text-align: left;
+    border-top: 0px;
+}
+
+#showActivityModal pre {
+    white-space:pre-wrap;
+}
+
+.queue {
+    background-color: #e6e6e6;
+    font-size: .8em;
+}
+
+:not(.queue) + .queue td {
+    border-top: 2px solid #545454; 
+}
+
+.booked-text-color {
+    color: green;
+}
