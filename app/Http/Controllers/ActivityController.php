@@ -12,11 +12,10 @@ class ActivityController extends Controller
             return view('auth.login');
         }
 
-        // return view('activities', [
-        //     'activities' => auth()->user()->activities()->where('start', '>=', Carbon::now('Europe/Stockholm'))->get()->sortBy('start'),
-        //     'boxes' => auth()->user()->boxes()->where('box_user.admin', true)->get()->sortBy('name'),
-        //     'is_admin' => DB::select('SELECT * FROM box_user where user_id=' . auth()->user()->id . ' AND admin=true')
-
-        // ]);
+        return view('activities.activities', [
+            'activities' => [],
+            'boxes' => [],
+            'is_admin' => true
+        ]);
     }
 }

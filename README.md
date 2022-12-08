@@ -6,3 +6,6 @@ Projektet är kopplat till gymnasiearbetet Rasmus Wiktell Sundman gör.
 
 ## Autentisering
 Användarens JWT ska skickas med som en cookie.
+
+## TODO
+Make User serilizable

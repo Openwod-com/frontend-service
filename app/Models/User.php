@@ -2,43 +2,90 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User extends Authenticatable
+class User implements AuthenticatableContract
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    private string $id;
+    private string $name;
+    private string $email;
+    private array $boxes = [];
+    private bool $admin = false;
+
+    public function __construct(string $id, string $name, string $email) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+    }
+
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getBoxes()
+    {
+        return $this->boxes;
+    }
+
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * Should not be used, use authentication JwtGuard
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    public function fetchUserByCredentials(Array $credentials)
+    {
+        return null;
+    }
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * {@inheritDoc}
+     * @see \Illuminate\Contracts\Auth\Authenticatable::getAuthIdentifierName()
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function getAuthIdentifierName()
+    {
+        return "id";
+    }
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * {@inheritDoc}
+     * @see \Illuminate\Contracts\Auth\Authenticatable::getAuthIdentifier()
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getAuthIdentifier()
+    {
+        return $this->{$this->getAuthIdentifierName()};
+    }
+
+    /**
+     * Should not be used, use authentication JwtGuard
+     */
+    public function getAuthPassword() {}
+
+    /**
+     * Should not be used, use authentication JwtGuard
+     */
+    public function getRememberToken(){}
+
+    /**
+     * Should not be used, use authentication JwtGuard
+     */
+    public function setRememberToken($value) {}
+
+    /**
+     * Should not be used, use authentication JwtGuard
+     */
+    public function getRememberTokenName() {}
 }

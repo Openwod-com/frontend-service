@@ -33,6 +33,10 @@ return [
 
     'auth' => [
         'base_url' => env('AUTH_SERVICE_BASE_URL'),
+        'jwt' => [
+            'iss' => env('AUTH_SERVICE_JWT_ISS'),
+            'aud' => env('AUTH_SERVICE_JWT_AUD'),
+        ]
     ],
 
 ];
