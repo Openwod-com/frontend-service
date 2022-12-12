@@ -16,53 +16,48 @@
 
 <script>
     window.addEventListener('load', () => {
-    $('#members-table').DataTable( {
-        dom: 'frtip',
-        "order": [[ 1, "asc" ]],
-        "pageLength": 50,
-		ajax: {
-			"url": "/api/members",
-			"dataSrc": ""
-        },
-        "columnDefs": [
-            { className: "hide-on-portrait", "targets": [ 2 ] }
-        ],
-        columns: [
-            {
-                "orderable": false,
-                "mDataProp": null,
-				fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                    if (oData.avatar) {
-                        $(nTd).html("<img class='dt-img' src='" + oData.avatar + "'> ");
-					} else {
-                        $(nTd).html("<img class='dt-img' src='/img/default_user.jpg'> ");
-					}
+        $('#members-table').DataTable( {
+            dom: 'frtip',
+            "order": [[ 1, "asc" ]],
+            "pageLength": 50,
+            ajax: {
+                "url": "{{ config('services.users.base_url') }}/users",
+                "dataSrc": ""
+            },
+            "columnDefs": [
+                { className: "hide-on-portrait", "targets": [ 2 ] }
+            ],
+            columns: [
+                {
+                    "orderable": false,
+                    "mDataProp": null,
+                    fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        if (oData.avatar) {
+                            $(nTd).html("<img class='dt-img' src='" + oData.avatar + "'> ");
+                        } else {
+                            $(nTd).html("<img class='dt-img' src='/img/default_user.jpg'> ");
+                        }
+                    },
                 },
-            },
-            {
-                data: 'name',
-                "visible": true,
-                "searchable": true,
-            },
-            {
-				data: 'join_date',
-				"visible": true,
-                "searchable": true
+                {
+                    data: 'name',
+                    "visible": true,
+                    "searchable": true,
+                },
+                {
+                    data: 'join_date',
+                    "visible": true,
+                    "searchable": true
+                }
+            ],
+            "language": {
+                "info": "Showing _START_ to _END_ of _TOTAL_ members",
+                "infoFiltered":   "",
+                "infoEmpty":      "Showing 0 to 0 of 0 members"
             }
-        ],
-        "language": {
-            "info": "Showing _START_ to _END_ of _TOTAL_ members",
-            "infoFiltered":   "",
-            "infoEmpty":      "Showing 0 to 0 of 0 members"
-        } 
-    }
-    );
-    $('input[type="search"]').focus();
-
-    
-} );
-
+        }
+        );
+        $('input[type="search"]').focus();
+    } );
 </script>
-
-<!-- <script src="{{ mix('js/activities.js') }}"></script> -->
 @endsection

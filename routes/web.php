@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ActivityController::class, 'index'])->name('home');
+Route::get('/', [ActivityController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 
@@ -26,3 +26,7 @@ Route::get('/about', function() {
 Route::get('/policy', function() {
     return view('policy');
 })->name('policy');
+
+Route::get('/members', function() {
+    return view('members');
+})->name('members')->middleware('auth');

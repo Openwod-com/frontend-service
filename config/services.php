@@ -36,7 +36,11 @@ return [
         'jwt' => [
             'iss' => env('AUTH_SERVICE_JWT_ISS'),
             'aud' => env('AUTH_SERVICE_JWT_AUD'),
-        ]
+        ],
     ],
+
+    'users' => [
+        'base_url' => env('USERS_SERVICE_BASE_URL'),
+    ]
 
 ];
