@@ -58,7 +58,7 @@
 
 @section('scripts3')
 <script>
-	$(document).ready(function() {
+	window.addEventListener('load', () => {
 		// Define global variables
 		let openModal;
 
@@ -142,14 +142,14 @@
 							modal.find(".updateMembers").append(html);
 							buttonTd.empty().append(html);
 						}
-	
+
 						// Update members list
 						modal.find("#members-table tbody").empty();
 						data['users'].forEach(async function(user) {
 							let url = user['avatar'];
 							if(user['avatar'] == undefined)
 								url = "/img/default_user.jpg";
-							
+
 							await modal.find("#members-table tbody").append("<tr><td><img src=\""+url+"\" alt=\"Bild\"></td><td>"+user['name']+"</td></tr>");
 						});
 

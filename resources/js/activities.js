@@ -25,7 +25,7 @@ function saveDataToConfirmUnbook(activityId, reloadPage = false, getUsers = fals
 }
 
 function updateMembers(form, _callback) {
-    
+
     $.ajax({
         url: form.attr('action'),
         type: 'POST',
@@ -36,7 +36,7 @@ function updateMembers(form, _callback) {
         },
         success: function(data) {
 			console.log(data);
-			
+
             _callback(data);
             return data;
         },
@@ -74,12 +74,12 @@ function updateMembersGraphically(form, modal, status, activityId, users, queued
         // Update members list
         modal.find("#members-booked-table tbody").empty();
         console.log(users);
-        
+
         users.forEach(async function(user) {
             let url = user['avatar'];
             if(user['avatar'] == undefined)
                 url = "/img/default_user.jpg";
-            
+
             var user_html;
             user_html = '<tr><td><img class="members-table-img" src="' + url + '" alt="Bild"></td><td>' + user['name'];
             if (isAdmin)
@@ -92,7 +92,7 @@ function updateMembersGraphically(form, modal, status, activityId, users, queued
             let url = user['avatar'];
             if(user['avatar'] == undefined)
                 url = "/img/default_user.jpg";
-            
+
             var user_html;
             user_html = '<tr class="queue"><td><img class="members-table-img" src="' + url + '" alt="Bild"></td><td>' + user['name'] + ' (Queing #' + user['place_in_queue'] + ')';
             if (isAdmin)
@@ -113,7 +113,7 @@ function updateMembersGraphically(form, modal, status, activityId, users, queued
         $("tr[data-id=\""+activityId+"\"] .members-booked").text(membersBooked > maximum_users ? maximum_users : membersBooked);
         if(membersQueued <= 0)
             $("tr[data-id=\""+activityId+"\"] .members-queued-table").text('');
-        else 
+        else
             $("tr[data-id=\""+activityId+"\"] .members-queued-table").text('('+membersQueued+')');
 
         if (isMember)
@@ -246,12 +246,12 @@ window.remove_participant = function(member_id) {
     });
 }
 
-$(document).ready(function() {
+window.addEventListener('load', () => {
     // Fix so the modal dosen't open when you press the button in the table row.
     $('#activities-table tr').on("click", "input", function(e) {
         e.stopPropagation();
         console.log("Test");
-        
+
         if($(this).attr('data-target') == "#confirm-leave-modal") {
             // Open confirm modal to leave an activity
             if($(this).attr('data-unbook-type') == "unbook") {
@@ -294,7 +294,7 @@ $(document).ready(function() {
 				} else
 					modal.find('.members-queued-parentheses').hide();
 
-                    
+
                 modal.find(".updateMembers").empty();
                 if(data['is_member'])
                     modal.find(".updateMembers").append(getUnbookHtmlInput(openModal, true));
@@ -304,14 +304,14 @@ $(document).ready(function() {
                     modal.find(".updateMembers").append(getQueueHtmlInput(openModal));
                 else
                     modal.find(".updateMembers").append(getBookHtmlInput(openModal));
- 
+
                 if (data['is_admin']) {
                     modal.find('#deleteActivityButton').show();
                     modal.find(".action_buttons").html('<img class="action-img" onclick="edit_activity(' + openModal + ')" title="Edit Activity" src="/img/icon_edit.png"></img>' +
                         '<img class="action-img" onclick="copy_activity(' + openModal + ')" title="Copy activity" src="/img/icon_copy.png"></img>'
                     );
                     modal.find(".add-participant-icon").html('<img class="header-action-img" onclick="add_participant(' + openModal + ')" title="Add Participant" src="/img/icon_plus.png"></img>');
-                } 
+                }
                 else {
                     modal.find('#deleteActivityButton').hide();
                 }
@@ -323,7 +323,7 @@ $(document).ready(function() {
                     let url = user['avatar'];
                     if(user['avatar'] == undefined)
                         url = "/img/default_user.jpg";
-                    
+
                     var user_html;
                     user_html = '<tr><td><img class="members-table-img" src="' + url + '" alt="Bild"></td><td>' + user['name'];
                     if (data['is_admin'])
@@ -335,7 +335,7 @@ $(document).ready(function() {
                     let url = user['avatar'];
                     if(user['avatar'] == undefined)
                         url = "/img/default_user.jpg";
-                    
+
                     var user_html;
                     user_html = '<tr class="queue"><td><img class="members-table-img" src="'+url+'" alt="Bild"></td><td>'+user['name']+' (Queing #'+user['place_in_queue']+')';
                     if (data['is_admin'])
@@ -409,7 +409,7 @@ $(document).ready(function() {
             if($(this).attr('data-unbook-type') == "unbook") {
                 $('.unbook').show();
                 $('.unqueue').hide();
-                
+
                 // Save data to confirm toggle
                 // Input/button opens the modal automaticly
                 saveDataToConfirmUnbook(openModal, false, false, true);
@@ -427,7 +427,7 @@ $(document).ready(function() {
             $("#confirm-leave-modal").modal();
             saveDataToConfirmUnbook($(this).attr('data-id'), true);
         }
-        
+
         // Send ajax to book and refresh user data in modal, to show that the user is booked
         let form = $('#showActivityModal .updateMembers form#updateMembersForm');
         form.find('[type="submit"]').attr('disabled','disabled').css("cursor", "not-allowed");
@@ -459,7 +459,7 @@ $(document).ready(function() {
 
     $('#confirm-leave-modal').on('click', '[type="submit"]', function(e) {
         e.preventDefault();
-        
+
         let reopenModal = $('#confirm-leave-modal input[name="reopen-modal-after-confirm"]').val() == "false" ? false : true;
         let reloadPage = $('#confirm-leave-modal input[name="reload-page"]').val() == "false" ? false : true;
         let activityId = $('#confirm-leave-modal input[name="activity-id"]').val();
@@ -475,7 +475,7 @@ $(document).ready(function() {
                 $("tr[data-id=\""+activityId+"\"] .members-booked").text(data['members_booked'] > data['maximum_users'] ? data['maximum_users'] : data['members_booked']);
                 if(data['members_queued'] <= 0)
                     $("tr[data-id=\""+activityId+"\"] .members-queued-table").text('');
-                else 
+                else
                     $("tr[data-id=\""+activityId+"\"] .members-queued-table").text('('+data['members_queued']+')');
                 $('tr[data-id="'+activityId+'"]').removeClass('booked-text-color');
             });

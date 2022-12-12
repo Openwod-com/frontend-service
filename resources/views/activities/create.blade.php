@@ -71,7 +71,7 @@
 
 @section('scripts2')
 <script>
-	$(document).ready(function() {
+	window.addEventListener('load', () => {
 		$('#activityModal').on('submit', function(e) {
 			e.preventDefault();
 			$('#activityModal button[type="submit"]').attr('disabled','disabled').css("cursor", "not-allowed");

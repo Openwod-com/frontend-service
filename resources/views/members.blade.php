@@ -15,7 +15,7 @@
 </table>
 
 <script>
-$(document).ready(function() {
+    window.addEventListener('load', () => {
     $('#members-table').DataTable( {
         dom: 'frtip',
         "order": [[ 1, "asc" ]],
